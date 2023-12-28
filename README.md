@@ -1,14 +1,14 @@
 # Sprint_5
 
 test_reg:
-test_reg_with_already_user - убеждаемся, что с уже ранее зарегистрированным пользователем, повторном регистрация не проходит
-test_reg_with_uncorrect_password - убеждаемся, что вводе некорректного пароля, появляется тултип "Некорректный пароль"
-test_reg_with_correct_new_account - убеждаемся, что с корректными данными открывается нужный раздел и вход выполнен
+test_reg_with_already_user - ранее зарегистрированным пользователем, повторном регистрация не проходит
+test_reg_with_uncorrect_password - при вводе некорректного пароля, появляется тултип "Некорректный пароль"
+test_reg_with_correct_new_account - с корректными данными открывается нужный раздел и вход выполнен
 
 test_login1:
-test_auth_in_first_button - вход по кнопке «Войти в аккаунт» на главной
+test_auth_in_first_button - вход через «Войти в аккаунт» на главной
 test_login2:
-test_auth_in_second_button - вход через кнопку «Личный кабинет»
+test_auth_in_second_button - вход через «Личный кабинет»
 test_login3:
 test_auth_in_second_button_from_reg - вход через кнопку в форме регистрации
 test_login4:

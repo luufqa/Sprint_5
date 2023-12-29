@@ -1,13 +1,10 @@
-import pytest
 from selenium import webdriver
+import pytest
 
-# !!! Не пониманию, почему тестовые функции не принимают driver из conftest HELP !!! #
-# @pytest.mark.usefixtures("setup") - пытался подтянуть conftest
-@pytest.fixture(scope="session")
-def setup():
+
+@pytest.fixture
+def driver():
     driver = webdriver.Chrome()
     driver.get("https://stellarburgers.nomoreparties.site/")
+    driver.implicitly_wait(20)
     return driver
-
-# !!! Не пониманию, почему тестовые функции не принимают driver из conftest HELP !!! #
-# @pytest.mark.usefixtures("setup") - пытался подтянуть conftest

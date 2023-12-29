@@ -1,22 +1,19 @@
 from selenium.webdriver.common.by import By
-from selenium import webdriver
-import time
 import locators
+import accounts
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestElementsInsideProfile:
     # переход по клику на «Личный кабинет»
-    def test_open_user_profile_in_auth_second_login_button(self):
-        driver = webdriver.Chrome()
-        driver.get("https://stellarburgers.nomoreparties.site/")
+    def test_open_user_profile_in_auth_second_login_button(self, driver):
         # кликаем по кнопке 'Личный Кабинет'
         driver.find_element(By.XPATH, locators.second_login_button).click()
         # вводим существующий адрес почты аккаунта
-        driver.find_element(By.XPATH, locators.field_email).send_keys(
-            "luufqa@gmail.com")
+        driver.find_element(By.XPATH, locators.field_email).send_keys(accounts.testing_acc_email)
         # вводим существующий пароль аккаунта
-        driver.find_element(By.XPATH, locators.field_password).send_keys(
-            "3607833465")
+        driver.find_element(By.XPATH, locators.field_password).send_keys(accounts.testing_acc_pass)
 
         # кликаем по кнопке 'Войти'
         driver.find_element(By.XPATH, locators.enter_profile_button_second).click()
@@ -28,17 +25,13 @@ class TestElementsInsideProfile:
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
 
     # выход по кнопке «Выйти» в личном кабинете
-    def test_check_user_logout(self):
-        driver = webdriver.Chrome()
-        driver.get("https://stellarburgers.nomoreparties.site/")
+    def test_check_user_logout(self, driver):
         # кликаем по кнопке 'Личный Кабинет'
         driver.find_element(By.XPATH, locators.second_login_button).click()
         # вводим существующий адрес почты аккаунта
-        driver.find_element(By.XPATH, locators.field_email).send_keys(
-            "luufqa@gmail.com")
+        driver.find_element(By.XPATH, locators.field_email).send_keys(accounts.testing_acc_email)
         # вводим существующий пароль аккаунта
-        driver.find_element(By.XPATH, locators.field_password).send_keys(
-            "3607833465")
+        driver.find_element(By.XPATH, locators.field_password).send_keys(accounts.testing_acc_pass)
 
         # кликаем по кнопке 'Войти'
         driver.find_element(By.XPATH, locators.enter_profile_button_second).click()
@@ -47,24 +40,22 @@ class TestElementsInsideProfile:
         driver.find_element(By.XPATH, locators.second_login_button).click()
         # кликаем по кнопке 'Выход', чтобы выйти из профиля
         driver.find_element(By.XPATH, locators.logout_button).click()
-        time.sleep(2)
-
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH,
+                                            locators.enter_profile_button_second))
+        )
         # ожидаем, что выход из профиля выполняется корректно
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
         driver.quit()
 
     # переход по клику на «Конструктор» и на логотип Stellar Burgers
-    def test_check_click_for_elements_constructor_and_logo(self):
-        driver = webdriver.Chrome()
-        driver.get("https://stellarburgers.nomoreparties.site/")
+    def test_check_click_for_elements_constructor_and_logo(self, driver):
         # кликаем по кнопке 'Личный Кабинет'
         driver.find_element(By.XPATH, locators.second_login_button).click()
         # вводим существующий адрес почты аккаунта
-        driver.find_element(By.XPATH, locators.field_email).send_keys(
-            "luufqa@gmail.com")
+        driver.find_element(By.XPATH, locators.field_email).send_keys(accounts.testing_acc_email)
         # вводим существующий пароль аккаунта
-        driver.find_element(By.XPATH, locators.field_password).send_keys(
-            "3607833465")
+        driver.find_element(By.XPATH, locators.field_password).send_keys(accounts.testing_acc_pass)
 
         # кликаем по кнопке 'Войти'
         driver.find_element(By.XPATH, locators.enter_profile_button_second).click()
@@ -87,17 +78,13 @@ class TestElementsInsideProfile:
         driver.quit()
 
     # работают переходы к разделам: Булки, Соусы, Начинки
-    def test_check_click_for_elements_inside_constructor_menu(self):
-        driver = webdriver.Chrome()
-        driver.get("https://stellarburgers.nomoreparties.site/")
+    def test_check_click_for_elements_inside_constructor_menu(self, driver):
         # кликаем по кнопке 'Личный Кабинет'
         driver.find_element(By.XPATH, locators.second_login_button).click()
         # вводим существующий адрес почты аккаунта
-        driver.find_element(By.XPATH, locators.field_email).send_keys(
-            "luufqa@gmail.com")
+        driver.find_element(By.XPATH, locators.field_email).send_keys(accounts.testing_acc_email)
         # вводим существующий пароль аккаунта
-        driver.find_element(By.XPATH, locators.field_password).send_keys(
-            "3607833465")
+        driver.find_element(By.XPATH, locators.field_password).send_keys(accounts.testing_acc_pass)
 
         # кликаем по кнопке 'Войти'
         driver.find_element(By.XPATH, locators.enter_profile_button_second).click()

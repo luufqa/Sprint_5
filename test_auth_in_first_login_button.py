@@ -1,12 +1,14 @@
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+import pytest
 
 driver = webdriver.Chrome()
 driver.get("https://stellarburgers.nomoreparties.site/")
 
 
+#@pytest.mark.usefixtures("setup")
 # вход по кнопке «Войти в аккаунт» на главной
-def test_auth_in_first_button():
+def test_auth_in_first_login_button():
     # кликаем по кнопке 'Войти в аккаунт'
     driver.find_element(By.XPATH, ".//button[contains(text(), 'Войти в аккаунт')]").click()
     # вводим существующий адрес почты аккаунта

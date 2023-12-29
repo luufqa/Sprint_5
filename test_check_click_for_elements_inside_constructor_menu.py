@@ -3,11 +3,13 @@ from selenium import webdriver
 import time
 
 driver = webdriver.Chrome()
-driver.get("https://stellarburgers.nomoreparties.site/login")
+driver.get("https://stellarburgers.nomoreparties.site/")
 
 
 # работают переходы к разделам: Булки, Соусы, Начинки
-def test_step_jump_inside_contructor_menu():
+def test_check_click_for_elements_inside_constructor_menu():
+    # кликаем по кнопке 'Личный Кабинет'
+    driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
     # вводим существующий адрес почты аккаунта
     driver.find_element(By.XPATH, "/html/body/div/div/main/div/form/fieldset[1]/div/div/input").send_keys(
         "luufqa@gmail.com")

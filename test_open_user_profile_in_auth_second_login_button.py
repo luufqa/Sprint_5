@@ -7,7 +7,7 @@ driver.get("https://stellarburgers.nomoreparties.site/")
 
 
 # переход по клику на «Личный кабинет»
-def test_step_jump_in_auth_second_button():
+def test_open_user_profile_in_auth_second_login_button():
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
     # вводим существующий адрес почты аккаунта

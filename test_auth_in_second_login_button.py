@@ -6,8 +6,8 @@ driver = webdriver.Chrome()
 driver.get("https://stellarburgers.nomoreparties.site/")
 
 
-# переход по клику на «Конструктор» и на логотип Stellar Burgers
-def test_step_jump_contructor_logo_in_profile():
+# вход через кнопку «Личный кабинет»
+def test_auth_in_second_login_button():
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
     # вводим существующий адрес почты аккаунта
@@ -19,18 +19,7 @@ def test_step_jump_contructor_logo_in_profile():
     # кликаем по кнопке 'Войти'
     driver.find_element(By.XPATH, ".//button[contains(text(), 'Войти')]").click()
     time.sleep(2)
-    # кликаем по кнопке 'Личный Кабинет'
-    driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
-    time.sleep(2)
-    # кликаем по логотипу
-    driver.find_element(By.XPATH, ".//*[name()='svg' and @viewBox='0 0 290 50']").click()
-    time.sleep(2)
-    # кликаем по кнопке 'Личный Кабинет'
-    driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
-    time.sleep(2)
-    # кликаем по кнопке 'Конструктор'
-    driver.find_element(By.XPATH, ".//p[contains(text(), 'Конструктор')]").click()
-    # проверяем наличие кнопки 'Оформить заказ' после переходов
+    # проверяем наличие кнопки 'Оформить заказ' после авторизации
     button_in_inside_profile = driver.find_element(By.XPATH, ".//button[contains(text(), 'Оформить заказ')]").text
     # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
     assert button_in_inside_profile == 'Оформить заказ'

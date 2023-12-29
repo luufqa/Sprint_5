@@ -6,14 +6,10 @@ driver = webdriver.Chrome()
 driver.get("https://stellarburgers.nomoreparties.site/")
 
 
-# вход через кнопку в форме восстановления пароля
-def test_auth_in_second_button_from_restore():
+# выход по кнопке «Выйти» в личном кабинете
+def test_check_user_logout():
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
-    # кликаем по кнопке 'Восстановить пароль'
-    driver.find_element(By.XPATH, ".//a[contains(text(), 'Восстановить пароль')]").click()
-    # кликаем по кнопке 'Войти'
-    driver.find_element(By.XPATH, ".//a[contains(text(), 'Войти')]").click()
     # вводим существующий адрес почты аккаунта
     driver.find_element(By.XPATH, "/html/body/div/div/main/div/form/fieldset[1]/div/div/input").send_keys(
         "luufqa@gmail.com")
@@ -23,9 +19,13 @@ def test_auth_in_second_button_from_restore():
     # кликаем по кнопке 'Войти'
     driver.find_element(By.XPATH, ".//button[contains(text(), 'Войти')]").click()
     time.sleep(2)
-    # проверяем наличие кнопки 'Оформить заказ' после авторизации
-    button_in_inside_profile = driver.find_element(By.XPATH, ".//button[contains(text(), 'Оформить заказ')]").text
-    # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
-    assert button_in_inside_profile == 'Оформить заказ'
+    # кликаем по кнопке 'Личный Кабинет'
+    driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
+    # кликаем по кнопке 'Выход', чтобы выйти из профиля
+    driver.find_element(By.XPATH, ".//button[contains(text(), 'Выход')]").click()
+    time.sleep(2)
+
+    # ожидаем, что выход из профиля выполняется корректно
+    assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
     # завершаем работу
     driver.quit()

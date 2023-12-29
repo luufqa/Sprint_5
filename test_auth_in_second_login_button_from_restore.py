@@ -6,10 +6,14 @@ driver = webdriver.Chrome()
 driver.get("https://stellarburgers.nomoreparties.site/")
 
 
-# вход через кнопку «Личный кабинет»
-def test_auth_in_second_button():
+# вход через кнопку в форме восстановления пароля
+def test_auth_in_second_login_button_from_restore():
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
+    # кликаем по кнопке 'Восстановить пароль'
+    driver.find_element(By.XPATH, ".//a[contains(text(), 'Восстановить пароль')]").click()
+    # кликаем по кнопке 'Войти'
+    driver.find_element(By.XPATH, ".//a[contains(text(), 'Войти')]").click()
     # вводим существующий адрес почты аккаунта
     driver.find_element(By.XPATH, "/html/body/div/div/main/div/form/fieldset[1]/div/div/input").send_keys(
         "luufqa@gmail.com")

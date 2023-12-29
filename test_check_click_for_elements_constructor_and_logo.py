@@ -6,8 +6,8 @@ driver = webdriver.Chrome()
 driver.get("https://stellarburgers.nomoreparties.site/")
 
 
-# выход по кнопке «Выйти» в личном кабинете
-def test_logout_from_profile():
+# переход по клику на «Конструктор» и на логотип Stellar Burgers
+def test_check_click_for_elements_constructor_and_logo():
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
     # вводим существующий адрес почты аккаунта
@@ -21,11 +21,18 @@ def test_logout_from_profile():
     time.sleep(2)
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
-    # кликаем по кнопке 'Выход', чтобы выйти из профиля
-    driver.find_element(By.XPATH, ".//button[contains(text(), 'Выход')]").click()
     time.sleep(2)
-
-    # ожидаем, что выход из профиля выполняется корректно
-    assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
+    # кликаем по логотипу
+    driver.find_element(By.XPATH, ".//*[name()='svg' and @viewBox='0 0 290 50']").click()
+    time.sleep(2)
+    # кликаем по кнопке 'Личный Кабинет'
+    driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
+    time.sleep(2)
+    # кликаем по кнопке 'Конструктор'
+    driver.find_element(By.XPATH, ".//p[contains(text(), 'Конструктор')]").click()
+    # проверяем наличие кнопки 'Оформить заказ' после переходов
+    button_in_inside_profile = driver.find_element(By.XPATH, ".//button[contains(text(), 'Оформить заказ')]").text
+    # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
+    assert button_in_inside_profile == 'Оформить заказ'
     # завершаем работу
     driver.quit()

@@ -7,7 +7,7 @@ driver.get("https://stellarburgers.nomoreparties.site/")
 
 
 # вход через кнопку в форме регистрации
-def test_auth_in_second_button_from_reg():
+def test_auth_in_second_login_button_from_reg():
     # кликаем по кнопке 'Личный Кабинет'
     driver.find_element(By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]").click()
     # кликаем по кнопке 'Зарегистрироваться'

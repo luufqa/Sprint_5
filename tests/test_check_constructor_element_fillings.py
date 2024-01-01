@@ -4,7 +4,7 @@ import locators
 
 class TestConstructorElements:
 
-    # работают переходы к разделам: Начинки
+    # проверка перехода и изменение класса раздела: Начинки
     def test_check_constructor_element_fillings(self, driver):
         # кликаем по кнопкам внутри конструктора и записываем их измененные классы
         driver.find_element(By.XPATH, locators.fillings_element).click()

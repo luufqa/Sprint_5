@@ -4,7 +4,7 @@ import locators
 
 class TestConstructorElements:
 
-    # работают переходы к разделам: Соусы
+    # проверка перехода и изменение класса раздела: Булки
     def test_check_constructor_element_breads(self, driver):
         # кликаем по кнопкам внутри конструктора и записываем их измененные классы
         driver.find_element(By.XPATH, locators.sauces_element).click()

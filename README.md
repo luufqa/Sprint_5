@@ -10,7 +10,9 @@
 8. test_open_user_profile_in_auth_second_login_button - переход по клику на «Личный кабинет»
 9. test_check_click_for_elements_constructor_and_logo - переход по клику на «Конструктор» и на логотип Stellar Burgers
 10. test_check_user_logout - выход по кнопке «Выйти» в личном кабинете
-11. test_check_click_for_elements_inside_constructor_menu - работают переходы к разделам: Булки, Соусы, Начинки
+11. test_check_constructor_element_sauces - проверка перехода и изменение класса раздела: Соусы
+12. test_check_constructor_element_fillings - проверка перехода и изменение класса раздела: Начинки
+13. test_check_constructor_element_breads - проверка перехода и изменение класса раздела: Булки
 
 
 

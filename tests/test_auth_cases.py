@@ -21,7 +21,6 @@ class TestAuthCases:
         button_in_inside_profile = driver.find_element(By.XPATH, locators.get_order_button).text
         # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
         assert button_in_inside_profile == 'Оформить заказ'
-        driver.quit()
 
     # вход через кнопку «Личный кабинет»
     def test_auth_in_second_login_button(self, driver):
@@ -39,7 +38,6 @@ class TestAuthCases:
         button_in_inside_profile = driver.find_element(By.XPATH, locators.get_order_button).text
         # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
         assert button_in_inside_profile == 'Оформить заказ'
-        driver.quit()
 
     # вход через кнопку в форме регистрации
     def test_auth_in_second_login_button_from_reg(self, driver):
@@ -67,7 +65,6 @@ class TestAuthCases:
         button_in_inside_profile = driver.find_element(By.XPATH, locators.get_order_button).text
         # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
         assert button_in_inside_profile == 'Оформить заказ'
-        driver.quit()
 
     # вход через кнопку в форме восстановления пароля
     def test_auth_in_second_login_button_from_restore(self, driver):
@@ -95,4 +92,3 @@ class TestAuthCases:
         button_in_inside_profile = driver.find_element(By.XPATH, locators.get_order_button).text
         # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
         assert button_in_inside_profile == 'Оформить заказ'
-        driver.quit()

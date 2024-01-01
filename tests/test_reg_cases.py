@@ -7,15 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 # создаем случаеное Имя и Фамилию для почты
-fake = Faker()
-all_names = {}
-
-for z in range(100):
-    fake = Faker(['en_US'])
-    all_names.setdefault("Имя и фамилия", []).append(fake.name())
-number_for_all_names = random.randint(1, 99)
-name = all_names['Имя и фамилия'][number_for_all_names]
-name = name.replace(' ', '')
+name = Faker(['en_US']).name().replace(' ', '')
 
 # создаем случаеную учетку
 number_pass = f"{random.randint(100000, 999999)}"
@@ -51,7 +43,6 @@ class TestRegCases:
         # ожидаем, что появится ошибка 'Такой пользователь уже существует'
         res = driver.find_element(By.XPATH, locators.tooltip_message_user)
         assert expected_result == res.text
-        driver.quit()
 
     # тест №2 - убеждаемся, что вводе некорректного пароля, появляется тултип "Некорректный пароль"
     @pytest.mark.parametrize("login, email, password, expected_result",
@@ -80,7 +71,6 @@ class TestRegCases:
         # ожидаем, что появится ошибка 'Некорректный пароль'
         res = driver.find_element(By.XPATH, locators.tooltip_message_pass)
         assert expected_result == res.text
-        driver.quit()
 
     # тест №3 - убеждаемся, что с корректными данными регистрация проходит
     def test_reg_with_correct_new_account(self, driver):
@@ -102,4 +92,3 @@ class TestRegCases:
         )
         # ожидаем, что вход будет выполнен
         assert "https://stellarburgers.nomoreparties.site/login" in driver.current_url
-        driver.quit()

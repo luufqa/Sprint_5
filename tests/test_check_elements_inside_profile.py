@@ -57,7 +57,7 @@ class TestElementsInsideProfile:
         driver.find_element(By.XPATH, locators.second_login_button).click()
         # кликаем по кнопке 'Конструктор'
         driver.find_element(By.XPATH, locators.constructor_element).click()
-        # проверяем наличие кнопки 'Оформить заказ' после переходов
+        # проверяем наличие кнопки 'Войти в аккаунт' после переходов
         button_in_inside_profile = driver.find_element(By.XPATH, locators.first_login_button).text
         # ожидаем, что откроется профиль и будет присутствовать кнопка 'Оформить заказ'
         assert button_in_inside_profile == 'Войти в аккаунт'
